@@ -1,23 +1,21 @@
-import { Action } from "../templates";
+import { Action, ISnakeDirec } from "../templates";
+import { SET_DIS_DIRECTION } from "../actions";
 
-const globalState = {
-  data: "",
+const globalState: ISnakeDirec = {
+  disallowedDirection: ""
 };
 
-const gameReducer = <T extends string, P>(
+const gameReducer = <T extends string, P extends string> (
   state = globalState,
   action: Action<T, P>
 ) => {
   switch (action.type) {
-    case "MOVE_RIGHT":
-      /**
-       * Perform a certain set of operations
-       */
+    case SET_DIS_DIRECTION: {
       return {
         ...state,
-        data: action.payload,
+        disallowedDirection: action.payload,
       };
-
+    }
     default:
       return state;
   }

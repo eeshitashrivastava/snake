@@ -28,7 +28,6 @@ function randomNumber(min: number, max: number) {
 }
 
 export const generateRandomPosition = (width: number, height: number) => {
-  console.log(width, height)
   return {
     x: randomNumber(0, width),
     y: randomNumber(0, height),
