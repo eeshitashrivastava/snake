@@ -1,10 +1,13 @@
-import Action from "./actionTemplate";
+import { Action } from "../templates";
 
-const GlobalState = {
+const globalState = {
   data: "",
 };
 
-const gameReducer = <T extends string, P>(state = GlobalState, action: Action<T, P>) => {
+const gameReducer = <T extends string, P>(
+  state = globalState,
+  action: Action<T, P>
+) => {
   switch (action.type) {
     case "MOVE_RIGHT":
       /**

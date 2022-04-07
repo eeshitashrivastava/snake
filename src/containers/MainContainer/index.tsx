@@ -1,7 +1,7 @@
 import { ChakraProvider, Container, Heading } from "@chakra-ui/react";
-import CanvasBoardComponent from "../../components/CanvasBoardComponent";
 import "@fontsource/press-start-2p";
 import theme from "../../theme";
+import CanvasBoardComponent from "../../components/CanvasBoardComponent";
 
 const MainContainer = () => {
   return (
@@ -14,6 +14,7 @@ const MainContainer = () => {
       </Container>
     </ChakraProvider>
   );
+  
 };
 
 export default MainContainer;

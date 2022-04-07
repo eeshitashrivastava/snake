@@ -1,0 +1,7 @@
+getting reference for canvas with typescript to be used with useRef hook:
+const canvasRef = useRef<HTMLCanvasElement | null>(null);
+const canvasCtx = canvasRef.current.getContext("2d");
+
+pure js version of getting context would be:
+const canvas = document.querySelector('canvas');
+const canvasCtx = canvas.getContext('2d');
