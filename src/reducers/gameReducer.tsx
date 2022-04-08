@@ -1,21 +1,25 @@
-import { Action, ISnakeDirec } from "../templates";
-import { SET_DIS_DIRECTION } from "../actions";
+import { Action, IGameUtilities } from "../templates";
+import { INCREMENT_SCORE, RESET_SCORE, GAME_STATE } from "../actions";
 
-const globalState: ISnakeDirec = {
-  disallowedDirection: ""
+const globalState: IGameUtilities = {
+  gameState: "start",
+  score: 0,
 };
 
-const gameReducer = <T extends string, P extends string> (
+const gameReducer = <T extends string, P extends Array<any>>(
   state = globalState,
   action: Action<T, P>
 ) => {
   switch (action.type) {
-    case SET_DIS_DIRECTION: {
+    case INCREMENT_SCORE:
       return {
         ...state,
-        disallowedDirection: action.payload,
+        score: state.score + 1,
       };
-    }
+    case RESET_SCORE:
+      return { ...state, score: 0 };
+    case GAME_STATE:
+      return { ...state, gameState: action.payload[0] };
     default:
       return state;
   }

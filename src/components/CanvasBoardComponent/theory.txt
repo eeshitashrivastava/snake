@@ -5,3 +5,5 @@ const canvasCtx = canvasRef.current.getContext("2d");
 pure js version of getting context would be:
 const canvas = document.querySelector('canvas');
 const canvasCtx = canvas.getContext('2d');
+
+width and height are refered with -20 because it goes out of box on right and bottom 

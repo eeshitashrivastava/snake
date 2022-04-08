@@ -1,9 +1,11 @@
 export interface ISnakeCoord {
   snake: ICoordinates[] | [];
+  disallowedDirection: string;
 }
 
-export interface ISnakeDirec {
-  disallowedDirection: string
+export interface IGameUtilities {
+  gameState: string;
+  score: number;
 }
 
 export interface ICoordinates {
@@ -19,4 +21,8 @@ export interface ICanvasBoard {
 export interface Action<T, P> {
   readonly type: T;
   readonly payload: P;
+}
+
+export interface IScoreCardProps {
+  resetBoard: () => void;
 }

@@ -33,3 +33,21 @@ export const generateRandomPosition = (width: number, height: number) => {
     y: randomNumber(0, height),
   };
 };
+
+export const hasSnakeCollided = (
+  snake: ICoordinates[],
+  currentHeadPos: ICoordinates
+) => {
+  let flag = false;
+  snake.forEach((pos: ICoordinates, index: number) => {
+    if (
+      pos.x === currentHeadPos.x &&
+      pos.y === currentHeadPos.y &&
+      index !== 0
+    ) {
+      flag = true;
+    }
+  });
+
+  return flag;
+};

@@ -14,6 +14,8 @@ import {
   DOWN,
   LEFT,
   RIGHT,
+  STOP_GAME,
+  RESET_GAME
 } from "../../actions";
 import { setDisDirection } from "../../actions/actionCreator";
 import { ICoordinates } from "../../templates";
@@ -23,10 +25,10 @@ export function* moveSaga(params: {
   payload: ICoordinates;
 }): Generator<
   | PutEffect<{ type: string; payload: ICoordinates }>
-  | PutEffect<{ type: string; payload: string }>
+  | PutEffect<{ type: string; payload: Array<string> }>
   | CallEffect<true>
 > {
-  while (true) {
+  while (params.type !== RESET_GAME && params.type !== STOP_GAME) {
     yield put({
       type: params.type.split("_")[1],
       payload: params.payload,
@@ -53,7 +55,10 @@ export function* moveSaga(params: {
 }
 
 function* watcherSagas() {
-  yield takeLatest([MOVE_RIGHT, MOVE_LEFT, MOVE_UP, MOVE_DOWN], moveSaga);
+  yield takeLatest(
+    [MOVE_RIGHT, MOVE_LEFT, MOVE_UP, MOVE_DOWN, STOP_GAME, RESET_GAME],
+    moveSaga
+  );
 }
 
 export default watcherSagas;
