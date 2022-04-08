@@ -33,8 +33,6 @@ const CanvasBoardComponent = ({
   width,
 }: ICanvasBoard) => {
   const dispatch = useAppDispatch();
-  //game state
-  //const [gameEnded, setGameEnded] = useState(false);
   // canvas context
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
@@ -104,7 +102,6 @@ const CanvasBoardComponent = ({
   const resetBoard = useCallback(() => {
     window.removeEventListener("keydown", handleKeyEvents);
     dispatch(resetGame());
-    dispatch(updateGameState("start"));
     dispatch(updateScore(RESET_SCORE));
     dispatch(updateSnake(RESET_SNAKE));
     clearBoard(context);
